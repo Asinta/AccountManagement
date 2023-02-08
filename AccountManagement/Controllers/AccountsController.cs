@@ -1,5 +1,3 @@
-using Mapster;
-
 namespace AccountManagement.Controllers;
 
 [ApiController]
@@ -23,12 +21,12 @@ public class AccountsController : ControllerBase
 
         var user = userRegistrationDto.Adapt<User>();
         var result = await _userManager.CreateAsync(user, userRegistrationDto.Password!);
-        if (!result.Succeeded)
+        if (result.Succeeded)
         {
-            var errors = result.Errors.Select(e => e.Description);
-            return BadRequest(new UserRegistrationResponseDto {Errors = errors});
+            return StatusCode(201);
         }
 
-        return StatusCode(201);
+        var errors = result.Errors.Select(e => e.Description);
+        return BadRequest(new UserRegistrationResponseDto {Errors = errors});
     }
 }

@@ -4,6 +4,7 @@ global using System.ComponentModel.DataAnnotations;
 global using AccountManagement.Data;
 global using AccountManagement.Dtos;
 global using AccountManagement.Entities;
+global using Mapster;
 global using MapsterMapper;
 global using Microsoft.AspNetCore.Identity;
 global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;

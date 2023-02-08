@@ -1,5 +1,3 @@
-using Mapster;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
