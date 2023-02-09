@@ -21,6 +21,8 @@ public class AccountsController : ControllerBase
 
         var user = userRegistrationDto.Adapt<User>();
         var result = await _userManager.CreateAsync(user, userRegistrationDto.Password!);
+        await _userManager.AddToRoleAsync(user, "basic");
+        await _userManager.UpdateAsync(user);
         if (result.Succeeded)
         {
             return StatusCode(201);
